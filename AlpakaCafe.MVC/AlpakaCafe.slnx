@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="../AlpakaCafe.BLL/AlpakaCafe.BLL.csproj" />
+  <Project Path="../AlpakaCafe.DAL/AlpakaCafe.DAL.csproj" />
   <Project Path="AlpakaCafe.MVC.csproj" />
 </Solution>
