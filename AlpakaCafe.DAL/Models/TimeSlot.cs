@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace AlpakaCafe.DAL.Models
 {
     public class TimeSlot
     {
-        public int SlotId { get; set; }
+        public int TimeSlotId { get; set; }
 
         public DateTime StartDate { get; set; }
         

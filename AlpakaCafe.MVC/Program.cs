@@ -10,7 +10,13 @@ builder.Services.AddControllersWithViews();
 
 // Add services to the container.
 
-builder.Services.AddDbContext<AlpakaCafeDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AlpakaCafeDbContext")));
+var connectionString = "Data Source=THINKBOOK16G7AR\\SQLEXPRESS;Database=AlpakaCafe;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;";
+
+builder.Services.AddDbContext<AlpakaCafeDbContext>(options => options.UseSqlServer(connectionString));
+
+//var connectionString = builder.Configuration.GetConnectionString("AlpakaCafeDbContext");
+//Console.WriteLine(connectionString ?? "CONNECTION STRING IS NULL");
+//builder.Services.AddDbContext<AlpakaCafeDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AlpakaCafeDbContext")));
 
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
