@@ -6,10 +6,6 @@ namespace AlpakaCafe.DAL
 {
     public class AlpakaCafeDbContext : DbContext
     {
-        public AlpakaCafeDbContext()
-        {
-
-        }
 
         public AlpakaCafeDbContext(DbContextOptions<AlpakaCafeDbContext> options)
             : base(options)
@@ -33,7 +29,7 @@ namespace AlpakaCafe.DAL
         {
             base.OnModelCreating(modelBuilder);
 
-
+            modelBuilder.Entity<Alpaca>();
         }
 
     }

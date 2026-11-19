@@ -1,6 +1,5 @@
+using AlpakaCafe.BLL;
 using AlpakaCafe.DAL;
-using AlpakaCafe.MVC.Data;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -8,51 +7,38 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-// Add services to the container.
+builder.Services.AddDbContext<AlpakaCafeDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AlpakaCafeDbContext")));
 
-var connectionString = "Data Source=THINKBOOK16G7AR\\SQLEXPRESS;Database=AlpakaCafe;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;";
-
-builder.Services.AddDbContext<AlpakaCafeDbContext>(options => options.UseSqlServer(connectionString));
-
-//var connectionString = builder.Configuration.GetConnectionString("AlpakaCafeDbContext");
-//Console.WriteLine(connectionString ?? "CONNECTION STRING IS NULL");
-//builder.Services.AddDbContext<AlpakaCafeDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AlpakaCafeDbContext")));
+builder.Services.AddScoped<AlpacaService>();
 
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//    .AddEntityFrameworkStores<ApplicationDbContext>();
+
 
 
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseMigrationsEndPoint();
-}
-else
+if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
+//app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
-
-app.MapRazorPages()
-   .WithStaticAssets();
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
