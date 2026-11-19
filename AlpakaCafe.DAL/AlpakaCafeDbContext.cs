@@ -20,6 +20,8 @@ namespace AlpakaCafe.DAL
 
         public DbSet<Alpaca> Alpacas { get; set; }
 
+        public DbSet<Review> Reviews { get; set; } 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.ConfigureWarnings(w => w.Ignore(CoreEventId.PossibleIncorrectRequiredNavigationWithQueryFilterInteractionWarning));

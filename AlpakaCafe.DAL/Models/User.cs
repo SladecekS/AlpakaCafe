@@ -24,5 +24,7 @@ namespace AlpakaCafe.DAL.Models
 
         [StringLength(12)]
         public int PhoneNumber { get; set; }
+
+        public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
     }
 }
