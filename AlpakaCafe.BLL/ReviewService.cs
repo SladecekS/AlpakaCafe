@@ -25,5 +25,28 @@ namespace AlpakaCafe.BLL
         {
             return _context.Reviews.FirstOrDefault(c => c.ReviewId == id);
         }
+
+        public async Task Create(Review review)
+        {
+            _context.Reviews.Add(review);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Update(Review review)
+        {
+            _context.Reviews.Update(review);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(int id)
+        {
+            var review = Get(id);
+
+            if (review != null)
+            {
+                _context.Reviews.Remove(review);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

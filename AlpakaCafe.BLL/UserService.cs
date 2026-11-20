@@ -25,5 +25,28 @@ namespace AlpakaCafe.BLL
         {
             return _context.Users.FirstOrDefault(c => c.UserId == id);
         }
+
+        public async Task Create(User user)
+        {
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Update(User user)
+        {
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(int id)
+        {
+            var user = Get(id);
+
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

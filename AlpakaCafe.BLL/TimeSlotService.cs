@@ -25,5 +25,28 @@ namespace AlpakaCafe.BLL
         {
             return _context.TimeSlots.FirstOrDefault(c => c.TimeSlotId == id);
         }
+
+        public async Task Create(TimeSlot timeSlot)
+        {
+            _context.TimeSlots.Add(timeSlot);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Update(TimeSlot timeSlot)
+        {
+            _context.TimeSlots.Update(timeSlot);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(int id)
+        {
+            var timeSlot = Get(id);
+
+            if (timeSlot != null)
+            {
+                _context.TimeSlots.Remove(timeSlot);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }
