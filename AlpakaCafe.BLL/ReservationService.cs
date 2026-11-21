@@ -34,14 +34,12 @@ namespace AlpakaCafe.BLL
             await _context.SaveChangesAsync();
         }
 
-        // Izmena postojeće alpake
         public async Task Update(Reservation reservation)
         {
             _context.Reservations.Update(reservation);
             await _context.SaveChangesAsync();
         }
 
-        // Brisanje alpake
         public async Task Delete(int id)
         {
             var reservation = Get(id);

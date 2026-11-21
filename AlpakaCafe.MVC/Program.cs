@@ -10,6 +10,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AlpakaCafeDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AlpakaCafeDbContext")));
 
 builder.Services.AddScoped<AlpacaService>();
+builder.Services.AddScoped<ReservationService>();
+builder.Services.AddScoped<ReviewService>();
+builder.Services.AddScoped<TimeSlotService>();
+builder.Services.AddScoped<UserService>();
 
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
