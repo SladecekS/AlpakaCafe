@@ -15,7 +15,7 @@ namespace AlpakaCafe.DAL.Models
 
         public int Capacity { get; set; }
 
-        //public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
 
         public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
     }

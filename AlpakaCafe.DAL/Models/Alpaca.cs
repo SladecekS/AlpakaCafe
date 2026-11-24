@@ -15,5 +15,9 @@ namespace AlpakaCafe.DAL.Models
         public string Description { get; set; }
 
         public DateTime BirthDate { get; set; }
+
+        public string ImageUrl { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

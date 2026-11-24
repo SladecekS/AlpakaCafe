@@ -18,5 +18,8 @@ namespace AlpakaCafe.DAL.Models
         public int UserId { get; set; }
 
         public User User { get; set; }
+
+        public int ReservationId { get; set; }
+        public Reservation Reservation { get; set; }
     }
 }

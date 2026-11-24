@@ -24,4 +24,8 @@
     <ProjectReference Include="..\AlpakaCafe.BLL\AlpakaCafe.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
 </Project>
